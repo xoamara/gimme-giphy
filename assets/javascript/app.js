@@ -1,39 +1,45 @@
 $("document").ready(function () {
 
 
-    let topics = ["cats", "star wars", "fail", "like a boss", "80s", "cute", "really", "facepalm", "kitten", "puppy"];
+    let topics = ["cats", "star wars", "fail", "like a boss", "80s", "cute", "really", "facepalm", "kitten", "puppy", "yoda"];
 
     let buttonZone = $("#button-zone");
     let gifZone = $("#gif-zone");
-    let gifForm = $("#gif-form");
     let addToArr = $("#add-topic");
 
-    $(addToArr).on("click"), function () {
+    $(addToArr).on("click", function (e) {
+        e.preventDefault();
         let userInput = $("#topic-input").val();
-        console.log(userInput);
-    }
+        topics.push(userInput);
+        renderButton(userInput);
+    });
 
 
     for (var i = 0; i < topics.length; i++) {
+        renderButton(topics[i]);
+    };
+
+    function renderButton (topic){ 
         let topicButton = $("<button>", "</button>");
-        let buttonValue = topics[i];
-        topicButton.attr("data-name", buttonValue);
+        topicButton.attr("data-name", topic);
         topicButton.attr({
             class: "btn btn-secondary btn-lg shadow",
             type: "submit",
-            value: buttonValue,
+            value: topic,
         })
-        topicButton.text(buttonValue);
+        topicButton.text(topic);
         buttonZone.append(topicButton);
 
-    };
+    }
 
 
-    $("button").on("click", function () {
+    buttonZone.on("click", "button", function () {
+        gifZone.empty();
         let topicSearch = $(this).attr("data-name");
         const API_KEY = "api_key=fqIACawBYenDy5toIgCLpnqwOfsm5jnD";
         let gifLimit = 10;
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topicSearch + "&" + API_KEY + "&limit=" + gifLimit;
+
 
         // var queryURL = "http://api.giphy.com/v1/gifs/random?" + API_KEY + "&tag=" + topicSearch + "&limit=" + gifLimit;
 
@@ -52,24 +58,35 @@ $("document").ready(function () {
                 gifImage.attr({
                     class: "img-fluid img-thumbnail",
                     src: results[j].images.original_still.url,
+                    still: results[j].images.original_still.url,
+                    animated: results[j].images.original.url,
+                    state: "still",
                 })
                 // gifImage.attr("src", results[j].images.original_still.url);
 
                 gifDiv.prepend(gifImage);
                 gifDiv.prepend(p);
-
                 gifZone.prepend(gifDiv);
-
             }
-
-
         });
 
 
     });
 
+gifZone.on("click", "img", function () {
+    let still = $(this).attr("still");
+    let animated = $(this).attr("animated");
+    let state = $(this).attr("state");
 
+    if (state === "still") {
+        $(this).attr("src", animated);
+        $(this).attr("state", "animated");
+    } else {
+        $(this).attr("src", still);
+        $(this).attr("state", "still");
+    }
 
+});
 
 
 
