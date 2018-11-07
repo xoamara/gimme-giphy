@@ -38,10 +38,10 @@ $("document").ready(function () {
         let topicSearch = $(this).attr("data-name");
         const API_KEY = "api_key=fqIACawBYenDy5toIgCLpnqwOfsm5jnD";
         let gifLimit = 10;
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topicSearch + "&" + API_KEY + "&limit=" + gifLimit;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicSearch + "&" + API_KEY + "&limit=" + gifLimit;
 
 
-        // var queryURL = "http://api.giphy.com/v1/gifs/random?" + API_KEY + "&tag=" + topicSearch + "&limit=" + gifLimit;
+        // var queryURL = "https://api.giphy.com/v1/gifs/random?" + API_KEY + "&tag=" + topicSearch + "&limit=" + gifLimit;
 
         $.ajax({
             url: queryURL,
