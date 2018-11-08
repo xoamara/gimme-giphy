@@ -1,7 +1,7 @@
 $("document").ready(function () {
 
 
-    let topics = ["cats", "star wars", "fail", "like a boss", "80s", "cute", "really", "facepalm", "kitten", "puppy", "yoda"];
+    let topics = ["cats", "star wars", "fail", "like a boss", "80s", "cute", "really", "facepalm", "kitten", "puppy", "yoda", "anchorman"];
 
     let buttonZone = $("#button-zone");
     let gifZone = $("#gif-zone");
@@ -12,6 +12,7 @@ $("document").ready(function () {
         let userInput = $("#topic-input").val();
         topics.push(userInput);
         renderButton(userInput);
+        $("topic-input").val("");
     });
 
 
@@ -50,16 +51,18 @@ $("document").ready(function () {
             console.log(response);
             let results = response.data;
             for (var j = 0; j < results.length; j++) {
+
                 let gifDiv = $("<div>");
                 let gifRating = results[j].rating;
                 let p = $("<p>").text("Rating: " + gifRating.toUpperCase());
+                // p.addClass("text-left");
 
                 let gifImage = $("<img>");
                 gifImage.attr({
-                    class: "img-fluid img-thumbnail",
-                    src: results[j].images.original_still.url,
-                    still: results[j].images.original_still.url,
-                    animated: results[j].images.original.url,
+                    class: "img-fluid img-thumbnail rounded",
+                    src: results[j].images.fixed_height_still.url,
+                    still: results[j].images.fixed_height_still.url,
+                    animated: results[j].images.fixed_height.url,
                     state: "still",
                 })
                 // gifImage.attr("src", results[j].images.original_still.url);
