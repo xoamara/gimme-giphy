@@ -12,7 +12,7 @@ $("document").ready(function () {
         let userInput = $("#topic-input").val();
         topics.push(userInput);
         renderButton(userInput);
-        $("topic-input").val("");
+        $("#topic-input").val("");
     });
 
 
@@ -59,7 +59,7 @@ $("document").ready(function () {
 
                 let gifImage = $("<img>");
                 gifImage.attr({
-                    class: "img-fluid img-thumbnail rounded",
+                    class: "img-fluid img-thumbnail shadow rounded",
                     src: results[j].images.fixed_height_still.url,
                     still: results[j].images.fixed_height_still.url,
                     animated: results[j].images.fixed_height.url,

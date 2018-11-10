@@ -9,4 +9,24 @@ button, input {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,0.55)!important;
 }
 
+#gif-zone > div {
+    float: left;
+    margin: 20px 10px;
 
+}
+
+#topic-form {
+    margin: 20px
+}
+
+body {
+    font-family: 'Baloo', cursive;
+}
+
+label {
+    font-size: 1.5em;
+}
+
+p {
+    text-align: center;
+}
