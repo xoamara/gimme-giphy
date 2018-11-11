@@ -24,7 +24,7 @@ $("document").ready(function () {
         let topicButton = $("<button>", "</button>");
         topicButton.attr("data-name", topic);
         topicButton.attr({
-            class: "btn btn-secondary btn-lg shadow",
+            class: "btn btn-secondary shadow",
             type: "submit",
             value: topic,
         })
@@ -42,7 +42,6 @@ $("document").ready(function () {
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicSearch + "&" + API_KEY + "&limit=" + gifLimit;
 
 
-        // var queryURL = "https://api.giphy.com/v1/gifs/random?" + API_KEY + "&tag=" + topicSearch + "&limit=" + gifLimit;
 
         $.ajax({
             url: queryURL,
@@ -55,7 +54,7 @@ $("document").ready(function () {
                 let gifDiv = $("<div>");
                 let gifRating = results[j].rating;
                 let p = $("<p>").text("Rating: " + gifRating.toUpperCase());
-                // p.addClass("text-left");
+
 
                 let gifImage = $("<img>");
                 gifImage.attr({
@@ -65,7 +64,7 @@ $("document").ready(function () {
                     animated: results[j].images.fixed_height.url,
                     state: "still",
                 })
-                // gifImage.attr("src", results[j].images.original_still.url);
+
 
                 gifDiv.prepend(gifImage);
                 gifDiv.prepend(p);

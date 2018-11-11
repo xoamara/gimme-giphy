@@ -3,6 +3,7 @@ button, input {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    font-family: 'Baloo', cursive;
 }
 
 .shadow {
@@ -19,14 +20,16 @@ button, input {
     margin: 20px
 }
 
-body {
-    font-family: 'Baloo', cursive;
-}
+/* body { */
+    /* font-family: 'Baloo', cursive;
+} */
 
 label {
     font-size: 1.5em;
+    font-family: 'Baloo', cursive;
 }
 
 p {
     text-align: center;
+    font-family: 'Baloo', cursive;
 }
